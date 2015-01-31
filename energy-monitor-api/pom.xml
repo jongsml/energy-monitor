@@ -5,46 +5,129 @@
     <artifactId>energy-monitor</artifactId>
     <version>1.0</version>    
   </parent>
-  <pluginRepositories>
-  	<pluginRepository>
-    	<id>spring-milestones</id>
-        <url>http://repo.spring.io/milestone</url>
-   	 </pluginRepository>
-  </pluginRepositories>
+    <properties>
+            <lombok.version>1.12.2</lombok.version>
+    
+    </properties>
+  
+<!--   
+  
+        <jackson.version>2.2.3</jackson.version>
+        <jersey.version>2.4.1</jersey.version>
+        <jetty-maven-plugin.version>8.1.14.v20131031</jetty-maven-plugin.version>
+        <joda-time.version>2.3</joda-time.version>
+        <jetty.port>8080</jetty.port>
+        <junit.version>4.11</junit.version>
+
+    </properties>
+     -->
+    <!-- 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${jersey.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+     -->
+        <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+  
+
   <artifactId>energy-monitor-api</artifactId>
   <packaging>war</packaging>
   <name>energy-monitor-api</name>
   <description>api for the energy-monitor</description>
   <build>
-  	<plugins>
-  		<plugin>
-    		<artifactId>maven-compiler-plugin</artifactId>
-    		<configuration>
-        		<source>1.8</source>
-        		<target>1.8</target>
-    		</configuration>
-		</plugin>
-		<plugin>
-    		<groupId>org.springframework.boot</groupId>
-    		<artifactId>spring-boot-maven-plugin</artifactId>
-		</plugin>
-  	</plugins>
+  	 <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>          
+        </plugins>
+        <finalName>energy-monitor-api</finalName>
   </build>
   
   <dependencies>
   <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-<!-- 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
- -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- 
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+        </dependency>
+         -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jersey</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-mongodb</artifactId>
+    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- 
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+         -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
   </dependencies>
 </project>
