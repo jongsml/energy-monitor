@@ -3,9 +3,14 @@
  <parent>
     <groupId>nl.leon</groupId>
     <artifactId>energy-monitor</artifactId>
-    <version>1.0</version>
-    
+    <version>1.0</version>    
   </parent>
+  <pluginRepositories>
+  	<pluginRepository>
+    	<id>spring-milestones</id>
+        <url>http://repo.spring.io/milestone</url>
+   	 </pluginRepository>
+  </pluginRepositories>
   <artifactId>energy-monitor-api</artifactId>
   <packaging>war</packaging>
   <name>energy-monitor-api</name>
@@ -19,6 +24,10 @@
         		<target>1.8</target>
     		</configuration>
 		</plugin>
+		<plugin>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
   	</plugins>
   </build>
   
@@ -27,10 +36,12 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
+<!-- 
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>
 </dependency>
+ -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-actuator</artifactId>
